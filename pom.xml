@@ -7,6 +7,9 @@
     <groupId>com.simon.cloud.leaf</groupId>
     <artifactId>spring-cloud-leaf</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>api</module>
+    </modules>
     <packaging>pom</packaging>
 
 
