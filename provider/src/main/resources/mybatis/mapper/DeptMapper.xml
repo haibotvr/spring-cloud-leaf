@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.simon.cloud.leaf.provider.dao.DeptDao">
+
+	<select id="findById" resultType="com.simon.cloud.leaf.api.entity.Dept" parameterType="Long">
+		select id,dname from cloud_dept where id = #{id};
+	</select>
+	<select id="findAll" resultType="com.simon.cloud.leaf.api.entity.Dept">
+		select id,dname from cloud_dept;
+	</select>
+	<insert id="addDept" parameterType="com.simon.cloud.leaf.api.entity.Dept">
+		INSERT INTO cloud_dept(dname) VALUES(#{dname});
+	</insert>
+
+</mapper>
+ 
+
