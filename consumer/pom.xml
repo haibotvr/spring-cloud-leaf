@@ -11,7 +11,8 @@
 	<artifactId>consumer</artifactId>
 
 	<dependencies>
-		<dependency><!-- 自己定义的api -->
+		<!-- 自己定义的api -->
+		<dependency>
 			<groupId>com.simon.cloud.leaf</groupId>
 			<artifactId>api</artifactId>
 			<version>${project.version}</version>
