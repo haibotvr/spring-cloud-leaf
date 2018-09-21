@@ -12,4 +12,6 @@ public interface DeptService {
 
     List<Dept> list();
 
+    boolean del(Long id);
+
 }

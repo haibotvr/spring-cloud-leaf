@@ -5,14 +5,17 @@
 <mapper namespace="com.simon.cloud.leaf.provider.dao.DeptDao">
 
 	<select id="findById" resultType="com.simon.cloud.leaf.api.entity.Dept" parameterType="Long">
-		select id,dname from cloud_dept where id = #{id};
+		SELECT id,dname FROM cloud_dept WHERE id = #{id};
 	</select>
 	<select id="findAll" resultType="com.simon.cloud.leaf.api.entity.Dept">
-		select id,dname from cloud_dept;
+		SELECT id,dname FROM cloud_dept;
 	</select>
 	<insert id="addDept" parameterType="com.simon.cloud.leaf.api.entity.Dept">
 		INSERT INTO cloud_dept(dname) VALUES(#{dname});
 	</insert>
+	<delete id="deleteDept" parameterType="Long">
+		DELETE FROM cloud_dept WHERE id = #{id};
+	</delete>
 
 </mapper>
  

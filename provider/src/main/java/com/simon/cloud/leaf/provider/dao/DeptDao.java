@@ -16,4 +16,6 @@ public interface DeptDao {
 
     List<Dept> findAll();
 
+    boolean deleteDept(Long id);
+
 }

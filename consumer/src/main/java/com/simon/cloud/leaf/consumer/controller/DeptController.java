@@ -2,6 +2,7 @@ package com.simon.cloud.leaf.consumer.controller;
 
 import com.simon.cloud.leaf.api.entity.Dept;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,6 +32,11 @@ public class DeptController {
     @RequestMapping(value = "/consumer/dept/list")
     public List<Dept> list() {
         return restTemplate.getForObject(REST_URL_PREFIX + "/dept/list", List.class);
+    }
+
+    @RequestMapping(value = "/consumer/dept/del/{id}")
+    public boolean del(@PathVariable("id") Long id){
+        return restTemplate.getForObject(REST_URL_PREFIX + "/dept/del/" + id, Boolean.class);
     }
 
     // 测试@EnableDiscoveryClient,消费端可以调用服务发现

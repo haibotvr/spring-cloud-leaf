@@ -13,20 +13,24 @@ public class DeptController {
     @Autowired
     private DeptService deptService;
 
-    @RequestMapping(value = "/dept/add", method = RequestMethod.POST)
+    @PostMapping(value = "/dept/add")
     public boolean add(@RequestBody Dept dept) {
         return deptService.add(dept);
     }
 
-    @RequestMapping(value = "/dept/get/{id}", method = RequestMethod.GET)
+    @GetMapping(value = "/dept/get/{id}")
     public Dept get(@PathVariable("id") Long id) {
         return deptService.get(id);
     }
 
-    @RequestMapping(value = "/dept/list", method = RequestMethod.GET)
+    @GetMapping(value = "/dept/list")
     public List<Dept> list() {
         return deptService.list();
     }
 
+    @GetMapping("/dept/del/{id}")
+    public boolean del(@PathVariable("id") Long id) {
+        return deptService.del(id);
+    }
 
 }
