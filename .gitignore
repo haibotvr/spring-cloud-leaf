@@ -36,5 +36,6 @@ mvnw
 
 # Java
 */target
+.DS_Store
 
 
