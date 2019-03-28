@@ -8,6 +8,7 @@
     <artifactId>spring-cloud-leaf</artifactId>
     <version>1.0-SNAPSHOT</version>
     <modules>
+        <module>api</module>
         <module>consumer</module>
         <module>provider</module>
         <module>eureka</module>
@@ -29,7 +30,8 @@
         <junit.version>4.12</junit.version>
         <log4j.version>1.2.17</log4j.version>
         <lombok.version>1.16.18</lombok.version>
-        <output.jar.directory>/home/simon/java/lib</output.jar.directory>
+        <project.build.directory>/home/simon/java/gitproject/spring-cloud-leaf/eureka/target</project.build.directory>
+        <project.output.directory>/home/simon/java/lib</project.output.directory>
     </properties>
 
     <dependencyManagement>
