@@ -4,14 +4,18 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
+    <groupId>com.simon.cloud.leaf</groupId>
+    <artifactId>api</artifactId>
+    <packaging>jar</packaging>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>api</name>
+    <description>Api for Spring Boot</description>
 
     <parent>
         <artifactId>spring-cloud-leaf</artifactId>
         <groupId>com.simon.cloud.leaf</groupId>
         <version>1.0-SNAPSHOT</version>
     </parent>
-
-    <artifactId>api</artifactId>
 
     <!-- 当前Module需要用到的jar包，按自己需求添加，如果父类已经包含了，可以不用写版本号 -->
     <dependencies>
