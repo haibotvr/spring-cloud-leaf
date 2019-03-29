@@ -74,9 +74,8 @@
 			<artifactId>spring-boot-devtools</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>com.simon.cloud.leaf</groupId>
-			<artifactId>api</artifactId>
-			<version>1.0-SNAPSHOT</version>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
 		</dependency>
 	</dependencies>
 

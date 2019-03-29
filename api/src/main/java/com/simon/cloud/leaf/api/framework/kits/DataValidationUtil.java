@@ -28,11 +28,11 @@ public class DataValidationUtil {
                 }
             }
         } catch (Exception e) {
-            log.error("数据校验发生异常", e);
+            log.error("数据校验发生异常", e.getMessage());
             throw new ValidException(sb.toString());
         }
         if(!StringUtils.isEmpty(sb.toString())){
-            sb.append("数据校验发生异常，请检查字段注解配置是否合法");
+            sb.append("数据校验发生异常，请检查!");
             throw new ValidException(sb.toString());
         }
     }
