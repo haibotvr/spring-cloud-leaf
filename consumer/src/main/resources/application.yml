@@ -1,11 +1,15 @@
 server:
   port: 9001
 
+spring:
+  application:
+    name: consumer
+
 eureka:
   client:
     register-with-eureka: true
     service-url:
-      defaultZone: http://simon:7589014@211.149.143.58:7001/eureka
+      defaultZone: http://simon:7589014@127.0.0.1:7001/eureka
   instance:
       instance-id: consumer
       prefer-ip-address: true                                 #访问路径可以显示IP地址

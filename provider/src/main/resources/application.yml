@@ -13,7 +13,7 @@ spring:
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource            # 当前数据源操作类型
     driver-class-name: com.mysql.cj.jdbc.Driver             # mysql驱动包
-    url: jdbc:mysql://211.149.143.58:3306/cloud_leaf?characterEncoding=utf8&serverTimezone=GMT&useSSL=false&allowPublicKeyRetrieval=true       # 数据库名称
+    url: jdbc:mysql://127.0.0.1:3306/cloud_leaf?characterEncoding=utf8&serverTimezone=GMT&useSSL=false&allowPublicKeyRetrieval=true       # 数据库名称
     username: simon
     password: 7589014bn
     dbcp2:
@@ -26,7 +26,7 @@ eureka:
   client:                                                   #客户端注册进eureka服务列表内
     register-with-eureka: true
     service-url:
-      defaultZone: http://simon:7589014@211.149.143.58:7001/eureka
+      defaultZone: http://simon:7589014@127.0.0.1:7001/eureka
       # http://boy:coolBoy@192.168.1.15:8000/eureka/
   instance:
     instance-id: provider
