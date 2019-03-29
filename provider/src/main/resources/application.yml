@@ -3,18 +3,18 @@ server:
 
 mybatis:
   config-location: classpath:mybatis/mybatis.cfg.xml        # mybatis配置文件所在路径
-  type-aliases-package: com.atguigu.springcloud.entities    # 所有Entity别名类所在包
+  type-aliases-package: com.simon.cloud.leaf.api.entities   # 所有Entity别名类所在包
   mapper-locations:
   - classpath:mybatis/mapper/**/*.xml                       # mapper映射文件
 
 spring:
-   application:
+  application:
     name: provider
-   datasource:
+  datasource:
     type: com.alibaba.druid.pool.DruidDataSource            # 当前数据源操作类型
-    driver-class-name: org.gjt.mm.mysql.Driver              # mysql驱动包
-    url: jdbc:mysql://122.114.245.215:3306/cloud_leaf       # 数据库名称
-    username: root
+    driver-class-name: com.mysql.cj.jdbc.Driver             # mysql驱动包
+    url: jdbc:mysql://211.149.143.58:3306/cloud_leaf?characterEncoding=utf8&serverTimezone=GMT&useSSL=false&allowPublicKeyRetrieval=true       # 数据库名称
+    username: simon
     password: 7589014bn
     dbcp2:
       min-idle: 5                                           # 数据库连接池的最小维持连接数
@@ -24,8 +24,10 @@ spring:
 
 eureka:
   client:                                                   #客户端注册进eureka服务列表内
+    register-with-eureka: true
     service-url:
-      defaultZone: http://localhost:7001/eureka
+      defaultZone: http://simon:7589014@211.149.143.58:7001/eureka
+      # http://boy:coolBoy@192.168.1.15:8000/eureka/
   instance:
     instance-id: provider
     prefer-ip-address: true                                 #访问路径可以显示IP地址
@@ -33,6 +35,6 @@ eureka:
 info:
   app.name: provider
   company.name: www.simon.com
-  build.artifactId: $project.artifactId$
-  build.version: $project.version$
+  build.artifactId: ${project.artifactId}$
+  build.version: ${project.version}$
 
