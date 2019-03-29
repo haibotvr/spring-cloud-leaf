@@ -6,9 +6,9 @@ eureka:
     register-with-eureka: true
     service-url:
       defaultZone: http://simon:7589014@211.149.143.58:7001/eureka
-    instance:
-        instance-id: consumer
-        prefer-ip-address: true                                 #访问路径可以显示IP地址
+  instance:
+      instance-id: consumer
+      prefer-ip-address: true                                 #访问路径可以显示IP地址
 info:
   app.name: consumer
   company.name: www.simon.com

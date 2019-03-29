@@ -1,4 +1,4 @@
-package com.simon.cloud.leaf.consumer;
+package com.simon.cloud.leaf;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
