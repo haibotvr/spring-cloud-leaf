@@ -1,5 +1,6 @@
 package com.simon.cloud.leaf.provider.controller;
 
+import com.simon.cloud.leaf.api.entity.AdminUser;
 import com.simon.cloud.leaf.api.framework.web.ReturnValue;
 import com.simon.cloud.leaf.api.vo.UserLoginVO;
 import com.simon.cloud.leaf.provider.service.AdminUserService;
@@ -19,6 +20,11 @@ public class AdminUserController {
     @PostMapping(value = "/adminUser/login")
     public ReturnValue login(@RequestBody UserLoginVO vo) {
         return adminUserService.login(vo);
+    }
+
+    @PostMapping(value = "/adminUser/insert")
+    public ReturnValue login(@RequestBody AdminUser vo) {
+        return adminUserService.insert(vo);
     }
 
 }

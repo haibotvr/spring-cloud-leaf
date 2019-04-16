@@ -32,4 +32,16 @@ public class AdminUserServiceImpl implements AdminUserService {
         }
         return ReturnValue.success().setData(adminUser).setMessage("登录成功");
     }
+
+    @Override
+    @BeanValid
+    public ReturnValue insert(AdminUser vo) {
+        AdminUser adminUser = adminUserMapper.findByUserName(vo.getLoginName());
+        if(adminUser != null){
+            return ReturnValue.error().setMessage("用户名已存在");
+        }
+        vo.setLoginPassword(passwordEncoder.encode(vo.getLoginPassword()));
+        adminUserMapper.insert(vo);
+        return ReturnValue.success().setMessage("新用户创建成功");
+    }
 }

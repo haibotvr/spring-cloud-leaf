@@ -1,5 +1,7 @@
 package com.simon.cloud.leaf.api.entity;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import java.util.Date;
 
 public class AdminUser {
@@ -19,6 +21,7 @@ public class AdminUser {
      *
      * @mbg.generated Fri Mar 29 11:59:24 CST 2019
      */
+    @NotBlank
     private String loginName;
 
     /**
@@ -28,6 +31,7 @@ public class AdminUser {
      *
      * @mbg.generated Fri Mar 29 11:59:24 CST 2019
      */
+    @NotBlank
     private String loginPassword;
 
     /**
@@ -91,6 +95,7 @@ public class AdminUser {
      *
      * @mbg.generated Fri Mar 29 11:59:24 CST 2019
      */
+    @NotBlank
     private String userPhone;
 
     /**
