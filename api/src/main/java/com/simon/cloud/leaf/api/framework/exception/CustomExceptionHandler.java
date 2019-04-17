@@ -13,8 +13,14 @@ public class CustomExceptionHandler {
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
     public ReturnValue handleException(Exception e){
-        log.error("捕获Controller异常:", e);
+        log.error("捕获Controller异常:{}", e);
         return ReturnValue.error().setMessage(e.getMessage());
     }
 
+    @ExceptionHandler(value = BusinessException.class)
+    @ResponseBody
+    public ReturnValue handleBusinessException(BusinessException e) {
+        log.error("捕获Controller异常:{}", e);
+        return ReturnValue.error().setCode(e.getCode()).setMessage(e.getMessage());
+    }
 }

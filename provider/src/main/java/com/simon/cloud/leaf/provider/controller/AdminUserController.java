@@ -23,7 +23,7 @@ public class AdminUserController {
     }
 
     @PostMapping(value = "/adminUser/insert")
-    public ReturnValue login(@RequestBody AdminUser vo) {
+    public ReturnValue insert(@RequestBody AdminUser vo) {
         return adminUserService.insert(vo);
     }
 
