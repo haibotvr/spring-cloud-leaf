@@ -36,7 +36,7 @@
         </javaClientGenerator>
 
         <!--生成对应表及类名-->
-        <table tableName="app_goods_category" domainObjectName="AppGoodsCategory">
+        <table tableName="admin_store" domainObjectName="AdminStore">
         </table>
     </context>
 </generatorConfiguration>
