@@ -1,6 +1,5 @@
 package com.simon.cloud.leaf.provider.service.impl;
 
-import com.simon.cloud.leaf.api.entity.AppGoodsExample;
 import com.simon.cloud.leaf.api.entity.AppGoodsUnit;
 import com.simon.cloud.leaf.api.entity.AppGoodsUnitExample;
 import com.simon.cloud.leaf.api.enums.status.UnitStatus;
