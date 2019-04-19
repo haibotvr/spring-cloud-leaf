@@ -27,14 +27,14 @@ public class AdminUserServiceImpl implements AdminUserService {
     public ReturnValue login(UserLoginVO vo) {
         AdminUser adminUser = adminUserMapper.findByUserName(vo.getUsername());
         if(adminUser == null){
-            throw new BusinessException(BusinessExceptionMessage.LOGIN_NAME_OR_PASSWORD_FAULT.getValue(), BusinessExceptionMessage.ADMIN_USER_IS_NOT_USE.getName());
-        }
-        if(adminUser.getUserStatus().equals(AdminUserStatus.UNAVAILABLE.getValue())){
-            throw new BusinessException(BusinessExceptionMessage.ADMIN_USER_IS_NOT_USE.getValue(), BusinessExceptionMessage.ADMIN_USER_IS_NOT_USE.getName());
+            throw new BusinessException(BusinessExceptionMessage.LOGIN_NAME_OR_PASSWORD_FAULT.getValue(), BusinessExceptionMessage.LOGIN_NAME_OR_PASSWORD_FAULT.getName());
         }
         //验证密码
         if(!passwordEncoder.matches(vo.getPassword(), adminUser.getLoginPassword())){
-            throw new BusinessException(BusinessExceptionMessage.LOGIN_NAME_OR_PASSWORD_FAULT.getValue(), BusinessExceptionMessage.ADMIN_USER_IS_NOT_USE.getName());
+            throw new BusinessException(BusinessExceptionMessage.LOGIN_NAME_OR_PASSWORD_FAULT.getValue(), BusinessExceptionMessage.LOGIN_NAME_OR_PASSWORD_FAULT.getName());
+        }
+        if(adminUser.getUserStatus().equals(AdminUserStatus.UNAVAILABLE.getValue())){
+            throw new BusinessException(BusinessExceptionMessage.ADMIN_USER_IS_NOT_USE.getValue(), BusinessExceptionMessage.ADMIN_USER_IS_NOT_USE.getName());
         }
         return ReturnValue.success().setData(adminUser).setMessage("登录成功");
     }
