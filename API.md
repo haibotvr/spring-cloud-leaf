@@ -1,6 +1,7 @@
 # 接口文档
 ## 一、后台相关
-### 1、登录
+### 1、用户
+#### 1)、登录
 请求模拟：curl -X POST -d "username=wangtong" -d "password=123456" -d "code=1234" http://127.0.0.1:9001/consumer/adminUser/login
 
 请求方式：POST
@@ -28,6 +29,29 @@ code 验证码
         "userPhone":"13888888888",
         "userEmail":"wangtong@123.com"
     },
+    "error":false,
+    "success":true
+}
+```
+#### 2)、注册
+请求模拟：curl -X POST -d "loginName=weihaibo&loginPassword=123456&realName=魏海波&nickName=simon&userEmail=554040883@qq.com&userPhone=18946554015" http://127.0.0.1:9001/consumer/adminUser/insert -v
+
+请求方式：POST
+
+请求参数：
+loginName 用户名
+loginPassword 密码
+realName 真实姓名
+nickName 昵称
+userPhone 手机号码
+userEmail 邮箱
+
+返回结果：
+```json
+{
+    "code":200,
+    "message":"新用户创建成功",
+    "data":null,
     "error":false,
     "success":true
 }

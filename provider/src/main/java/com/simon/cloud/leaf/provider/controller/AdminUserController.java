@@ -23,8 +23,8 @@ public class AdminUserController {
     }
 
     @PostMapping(value = "/adminUser/insert")
-    public ReturnValue insert(@RequestBody AdminUser vo) {
-        return adminUserService.insert(vo);
+    public ReturnValue insert(@RequestBody AdminUser record) {
+        return adminUserService.insert(record);
     }
 
 }

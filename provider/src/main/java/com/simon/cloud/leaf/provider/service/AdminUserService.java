@@ -8,5 +8,5 @@ public interface AdminUserService {
 
     ReturnValue login(UserLoginVO vo);
 
-    ReturnValue insert(AdminUser vo);
+    ReturnValue insert(AdminUser record);
 }

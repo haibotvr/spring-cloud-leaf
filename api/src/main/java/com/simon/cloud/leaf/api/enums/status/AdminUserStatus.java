@@ -5,7 +5,7 @@ package com.simon.cloud.leaf.api.enums.status;
  */
 public enum AdminUserStatus {
 
-    UNAVAILABLE("不可用", 0),
+    UNAVAILABLE("冻结", 0),
     AVAILABLE("可用", 1);
 
     private String name;
