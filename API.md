@@ -1,7 +1,7 @@
 # 接口文档
 ## 一、后台相关
 ### 1、登录
-请求模拟：curl -X POST -d "username=wangtong" -d "password=123456" -d "code=1234" http://211.149.143.58:9001/consumer/adminUser/login
+请求模拟：curl -X POST -d "username=wangtong" -d "password=123456" -d "code=1234" http://127.0.0.1:9001/consumer/adminUser/login
 
 请求方式：POST
 
