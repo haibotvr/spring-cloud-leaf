@@ -36,4 +36,3 @@ info:
   company.name: www.simon.com
   build.artifactId: ${project.artifactId}$
   build.version: ${project.version}$
-

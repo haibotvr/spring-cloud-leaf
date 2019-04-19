@@ -3,7 +3,7 @@ package com.simon.cloud.leaf.api.enums.status;
 /**
  * @author simon.wei
  */
-public enum UseableStatus {
+public enum UseStatus {
 
     NO("不可用", 0),
     YES("可用", 1);
@@ -11,7 +11,7 @@ public enum UseableStatus {
     private String name;
     private Integer value;
 
-    UseableStatus(String name, Integer value){
+    UseStatus(String name, Integer value){
         this.name = name;
         this.value = value;
     }
