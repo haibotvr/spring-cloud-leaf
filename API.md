@@ -34,7 +34,7 @@ code 验证码
 ```
 
 ### 2、菜品单位
-####1)、添加单位
+#### 1)、添加单位
 请求模拟：curl -X POST -d "unitName=单位"  http://127.0.0.1:9001/consumer/appGoodUnit/add
 
 请求方式：POST
@@ -52,7 +52,7 @@ unitName 单位名称
     "success":true
 }
 ```
-####2)、修改单位
+#### 2)、修改单位
 请求模拟：curl -X POST -d "unitName=单位" -d "id=5"  http://127.0.0.1:9001/consumer/appGoodUnit/edit
 
 请求方式：POST
@@ -71,7 +71,7 @@ id 单位ID
     "success":true
 }
 ```
-####3)、删除单位
+#### 3)、删除单位
 请求模拟：curl http://127.0.0.1:9001/consumer/appGoodUnit/del?id=5 -v
 
 请求方式：GET
@@ -89,7 +89,7 @@ id 单位ID
     "success":true
 }
 ```
-####4)、查询单位
+#### 4)、查询单位
 请求模拟：curl http://127.0.0.1:9001/consumer/appGoodUnit/selectByStoreId?storeId=1 -v
 
 请求方式：GET
