@@ -156,3 +156,87 @@ storeId 店铺ID
     "success":true
 }
 ```
+### 3、菜单
+#### 1)、添加菜单
+请求模拟：curl -X POST -d "menuName=早餐菜单"  http://127.0.0.1:9001/consumer/appMenu/add -v
+
+请求方式：POST
+
+请求参数：
+menuName 菜单名称
+
+返回结果：
+```json
+{
+    "code":200,
+    "message":"成功",
+    "data":1,
+    "error":false,
+    "success":true
+}
+```
+#### 2)、修改菜单
+请求模拟：curl -X POST -d "menuName=早餐菜单&id=1"  http://127.0.0.1:9001/consumer/appMenu/edit -v
+
+请求方式：POST
+
+请求参数：
+menuName 菜单名称
+id 菜单ID
+
+返回结果：
+```json
+{
+    "code":200,
+    "message":"成功",
+    "data":1,
+    "error":false,
+    "success":true
+}
+```
+#### 3)、删除菜单
+请求模拟：curl  http://127.0.0.1:9001/consumer/appMenu/del?id=1 -v
+
+请求方式：POST
+
+请求参数：
+menuName 菜单名称
+id 菜单ID
+
+返回结果：
+```json
+{
+    "code":200,
+    "message":"成功",
+    "data":1,
+    "error":false,
+    "success":true
+}
+```
+#### 4)、查询单位
+请求模拟：curl http://127.0.0.1:9001/consumer/appMenu/selectByStoreId?storeId=1 -v
+
+请求方式：GET
+
+请求参数：
+storeId 店铺ID
+
+返回结果：
+```json
+{
+    "code":200,
+    "message":"成功",
+    "data":[
+        {
+            "id":1,
+            "menuName":"早餐菜单",
+            "menuStatus":1,
+            "createTime":1556041603000,
+            "updateTime":1556012921000,
+            "storeId":1
+        }
+    ],
+    "error":false,
+    "success":true
+}
+```
