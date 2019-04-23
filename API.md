@@ -213,7 +213,7 @@ id 菜单ID
     "success":true
 }
 ```
-#### 4)、查询单位
+#### 4)、查询菜单
 请求模拟：curl http://127.0.0.1:9001/consumer/appMenu/selectByStoreId?storeId=1 -v
 
 请求方式：GET
@@ -233,6 +233,91 @@ storeId 店铺ID
             "menuStatus":1,
             "createTime":1556041603000,
             "updateTime":1556012921000,
+            "storeId":1
+        }
+    ],
+    "error":false,
+    "success":true
+}
+```
+### 4、分类
+#### 1)、添加分类
+请求模拟：curl -X POST -d "menuId=1&categoryName=早餐类"  http://127.0.0.1:9001/consumer/appGoodsCategory/add -v
+
+请求方式：POST
+
+请求参数：
+menuId 菜单ID
+categoryName 分类名称
+
+返回结果：
+```json
+{
+    "code":200,
+    "message":"成功",
+    "data":1,
+    "error":false,
+    "success":true
+}
+```
+#### 2)、修改分类
+请求模拟：curl -X POST -d "id=1&categoryName=早餐"  http://127.0.0.1:9001/consumer/appGoodsCategory/edit -v
+
+请求方式：POST
+
+请求参数：
+id 分类ID
+categoryName 分类名称
+
+返回结果：
+```json
+{
+    "code":200,
+    "message":"成功",
+    "data":1,
+    "error":false,
+    "success":true
+}
+```
+#### 3)、删除分类
+请求模拟：curl  http://127.0.0.1:9001/consumer/appGoodsCategory/del?id=1 -v
+
+请求方式：POST
+
+请求参数：
+id 分类ID
+
+返回结果：
+```json
+{
+    "code":200,
+    "message":"成功",
+    "data":1,
+    "error":false,
+    "success":true
+}
+```
+#### 4)、查询分类
+请求模拟：curl http://127.0.0.1:9001/consumer/appGoodsCategory/selectByStoreId?storeId=1 -v
+
+请求方式：POST
+
+请求参数：
+storeId 店铺ID
+
+返回结果：
+```json
+{
+    "code":200,
+    "message":"成功",
+    "data":[
+        {
+            "id":1,
+            "categoryName":"早餐",
+            "menuId":1,
+            "categoryStatus":1,
+            "createTime":1556016792000,
+            "updateTime":1556016878000,
             "storeId":1
         }
     ],
