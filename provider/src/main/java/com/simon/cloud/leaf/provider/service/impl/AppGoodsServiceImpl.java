@@ -2,6 +2,7 @@ package com.simon.cloud.leaf.provider.service.impl;
 
 import com.simon.cloud.leaf.api.entity.AppGoods;
 import com.simon.cloud.leaf.api.entity.AppGoodsExample;
+import com.simon.cloud.leaf.api.entity.AppGoodsWithBLOBs;
 import com.simon.cloud.leaf.api.enums.status.GoodsStatus;
 import com.simon.cloud.leaf.api.framework.exception.BusinessException;
 import com.simon.cloud.leaf.api.framework.web.ReturnValue;
@@ -19,21 +20,21 @@ public class AppGoodsServiceImpl implements AppGoodsService {
     AppGoodsMapper appGoodsMapper;
 
     @Override
-    public ReturnValue add(AppGoods record) throws BusinessException {
+    public ReturnValue add(AppGoodsWithBLOBs record) throws BusinessException {
         record.setStoreId(1L);
         record.setGoodsStatus(GoodsStatus.AVAILABLE.getValue());
         return ReturnValue.success().setData(appGoodsMapper.insertSelective(record));
     }
 
     @Override
-    public ReturnValue edit(AppGoods record) throws BusinessException {
+    public ReturnValue edit(AppGoodsWithBLOBs record) throws BusinessException {
         record.setUpdateTime(new Date());
         return ReturnValue.success().setData(appGoodsMapper.updateByPrimaryKeySelective(record));
     }
 
     @Override
     public ReturnValue del(Long id) throws BusinessException {
-        AppGoods record = new AppGoods();
+        AppGoodsWithBLOBs record = new AppGoodsWithBLOBs();
         record.setId(id);
         record.setGoodsStatus(GoodsStatus.UNAVAILABLE.getValue());
         return ReturnValue.success().setData(appGoodsMapper.updateByPrimaryKeySelective(record));
@@ -47,6 +48,6 @@ public class AppGoodsServiceImpl implements AppGoodsService {
         AppGoodsExample.Criteria criteria = example.createCriteria();
         criteria.andStoreIdEqualTo(storeId);
         criteria.andGoodsStatusEqualTo(GoodsStatus.AVAILABLE.getValue());
-        return ReturnValue.success().setData(appGoodsMapper.selectByExample(example));
+        return ReturnValue.success().setData(appGoodsMapper.selectByExampleWithBLOBs(example));
     }
 }

@@ -1,6 +1,6 @@
 package com.simon.cloud.leaf.provider.controller;
 
-import com.simon.cloud.leaf.api.entity.AppGoods;
+import com.simon.cloud.leaf.api.entity.AppGoodsWithBLOBs;
 import com.simon.cloud.leaf.api.framework.web.ReturnValue;
 import com.simon.cloud.leaf.provider.service.AppGoodsService;
 import lombok.extern.slf4j.Slf4j;
@@ -15,12 +15,12 @@ public class AppGoodsController {
     private AppGoodsService appGoodsService;
 
     @PostMapping(value = "/appGoods/add")
-    public ReturnValue add(@RequestBody AppGoods record) {
+    public ReturnValue add(@RequestBody AppGoodsWithBLOBs record) {
         return appGoodsService.add(record);
     }
 
     @PostMapping(value = "/appGoods/edit")
-    public ReturnValue edit(@RequestBody AppGoods record) {
+    public ReturnValue edit(@RequestBody AppGoodsWithBLOBs record) {
         return appGoodsService.edit(record);
     }
 

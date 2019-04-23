@@ -1,6 +1,6 @@
 package com.simon.cloud.leaf.consumer.controller;
 
-import com.simon.cloud.leaf.api.entity.AppGoods;
+import com.simon.cloud.leaf.api.entity.AppGoodsWithBLOBs;
 import com.simon.cloud.leaf.api.framework.web.ReturnValue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,12 +18,12 @@ public class AppGoodsController {
     private RestTemplate restTemplate;
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public ReturnValue add(AppGoods record) {
+    public ReturnValue add(AppGoodsWithBLOBs record) {
         return restTemplate.postForObject(REST_URL_PREFIX + "/appGood/add", record, ReturnValue.class);
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
-    public ReturnValue edit(AppGoods record) {
+    public ReturnValue edit(AppGoodsWithBLOBs record) {
         return restTemplate.postForObject(REST_URL_PREFIX + "/appGood/edit", record, ReturnValue.class);
     }
 
