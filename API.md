@@ -469,7 +469,7 @@ id 口味ID
     "success":true
 }
 ```
-#### 4)、查询标签
+#### 4)、查询口味
 请求模拟：curl http://127.0.0.1:9001/consumer/appGoodsTaste/selectByStoreId?storeId=1 -v
 
 请求方式：POST
