@@ -6,6 +6,7 @@ import com.simon.cloud.leaf.api.vo.UserLoginVO;
 import com.simon.cloud.leaf.provider.service.AppMenuService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,13 +19,13 @@ public class AppMenuController {
     private AppMenuService appMenuService;
 
     @PostMapping(value = "/appMenu/add")
-    public ReturnValue add(@RequestBody AppMenu vo) {
-        return appMenuService.add(vo);
+    public ReturnValue add(@RequestBody AppMenu record) {
+        return appMenuService.add(record);
     }
 
     @PostMapping(value = "/appMenu/edit")
-    public ReturnValue edit(@RequestBody AppMenu vo) {
-        return appMenuService.edit(vo);
+    public ReturnValue edit(@RequestBody AppMenu record) {
+        return appMenuService.edit(record);
     }
 
     @PostMapping(value = "/appMenu/del")
@@ -32,8 +33,8 @@ public class AppMenuController {
         return appMenuService.del(id);
     }
 
-    @PostMapping(value = "/appMenu/selectByStoreId")
-    public ReturnValue selectByStoreId(Long storeId) {
+    @PostMapping(value = "/appMenu/selectByStoreId/{storeId}")
+    public ReturnValue selectByStoreId(@PathVariable Long storeId) {
         return appMenuService.selectByStoreId(storeId);
     }
 

@@ -1,14 +1,14 @@
 package com.simon.cloud.leaf.provider.service;
 
-import com.simon.cloud.leaf.api.entity.AppMenu;
+import com.simon.cloud.leaf.api.entity.AppSaleTime;
 import com.simon.cloud.leaf.api.framework.exception.BusinessException;
 import com.simon.cloud.leaf.api.framework.web.ReturnValue;
 
-public interface AppMenuService {
+public interface AppSaleTimeService {
 
-    ReturnValue add(AppMenu record) throws BusinessException;
+    ReturnValue add(AppSaleTime record) throws BusinessException;
 
-    ReturnValue edit(AppMenu record) throws BusinessException;
+    ReturnValue edit(AppSaleTime record) throws BusinessException;
 
     ReturnValue del(Long id) throws BusinessException;
 
