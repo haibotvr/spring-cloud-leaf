@@ -325,3 +325,248 @@ storeId 店铺ID
     "success":true
 }
 ```
+### 5、标签
+#### 1)、添加标签
+请求模拟：curl -X POST -d "tagName=火&tagColor=red"  http://127.0.0.1:9001/consumer/appGoodsTag/add -v
+
+请求方式：POST
+
+请求参数：
+tagName 标签名称
+tagColor 标签颜色
+
+返回结果：
+```json
+{
+    "code":200,
+    "message":"成功",
+    "data":1,
+    "error":false,
+    "success":true
+}
+```
+#### 2)、修改标签
+请求模拟：curl -X POST -d "id=1&tagName=热&tagColor=red"  http://127.0.0.1:9001/consumer/appGoodsTag/edit -v
+
+请求方式：POST
+
+请求参数：
+id 标签ID
+tagName 标签名称
+tagColor 标签颜色
+
+返回结果：
+```json
+{
+    "code":200,
+    "message":"成功",
+    "data":1,
+    "error":false,
+    "success":true
+}
+```
+#### 3)、删除标签
+请求模拟：curl  http://127.0.0.1:9001/consumer/appGoodsTag/del?id=1 -v
+
+请求方式：POST
+
+请求参数：
+id 标签ID
+
+返回结果：
+```json
+{
+    "code":200,
+    "message":"成功",
+    "data":1,
+    "error":false,
+    "success":true
+}
+```
+#### 4)、查询标签
+请求模拟：curl http://127.0.0.1:9001/consumer/appGoodsTag/selectByStoreId?storeId=1 -v
+
+请求方式：POST
+
+请求参数：
+storeId 店铺ID
+
+返回结果：
+```json
+{
+    "code":200,
+    "message":"成功",
+    "data":[
+        {
+            "id":1,
+            "tagName":"热",
+            "tagColor":"red",
+            "createTime":1556018299000,
+            "updateTime":1556018354000,
+            "tagStatus":1,
+            "storeId":1
+        }
+    ],
+    "error":false,
+    "success":true
+}
+```
+### 5、口味
+#### 1)、添加口味
+请求模拟：curl -X POST -d "note=AAA&tasteName=AAA"  http://127.0.0.1:9001/consumer/appGoodsTaste/add -v
+
+请求方式：POST
+
+请求参数：
+note 口味明细
+tasteName 口味名称
+
+返回结果：
+```json
+{
+    "code":200,
+    "message":"成功",
+    "data":1,
+    "error":false,
+    "success":true
+}
+```
+#### 2)、修改口味
+请求模拟：curl -X POST -d "id=1&note=AAA&tasteName=AAA"  http://127.0.0.1:9001/consumer/appGoodsTaste/edit -v
+
+请求方式：POST
+
+请求参数：
+id 口味ID
+note 口味明细
+tasteName 口味名称
+
+返回结果：
+```json
+{
+    "code":200,
+    "message":"成功",
+    "data":1,
+    "error":false,
+    "success":true
+}
+```
+#### 3)、删除口味
+请求模拟：curl  http://127.0.0.1:9001/consumer/appGoodsTaste/del?id=1 -v
+
+请求方式：POST
+
+请求参数：
+id 口味ID
+
+返回结果：
+```json
+{
+    "code":200,
+    "message":"成功",
+    "data":1,
+    "error":false,
+    "success":true
+}
+```
+#### 4)、查询标签
+请求模拟：curl http://127.0.0.1:9001/consumer/appGoodsTaste/selectByStoreId?storeId=1 -v
+
+请求方式：POST
+
+请求参数：
+storeId 店铺ID
+
+返回结果：
+```json
+
+```
+### 6、售卖时间
+#### 1)、添加售卖时间
+请求模拟：curl -X POST -d "saleTimeName=早餐时间&startTime=08:00&endTime=12:00"  http://127.0.0.1:9001/consumer/appSaleTime/add -v
+
+请求方式：POST
+
+请求参数：
+saleTimeName 名称
+startTime 开始时间
+endTime 结束时间
+
+返回结果：
+```json
+{
+    "code":200,
+    "message":"成功",
+    "data":1,
+    "error":false,
+    "success":true
+}
+```
+#### 2)、修改售卖时间
+请求模拟：curl -X POST -d "id=1&saleTimeName=早餐时间&startTime=08:00&endTime=13:00"  http://127.0.0.1:9001/consumer/appSaleTime/edit -v
+
+请求方式：POST
+
+请求参数：
+id 售卖时间ID
+saleTimeName 名称
+startTime 开始时间
+endTime 结束时间
+
+返回结果：
+```json
+{
+    "code":200,
+    "message":"成功",
+    "data":1,
+    "error":false,
+    "success":true
+}
+```
+#### 3)、删除售卖时间
+请求模拟：curl  http://127.0.0.1:9001/consumer/appSaleTime/del?id=1 -v
+
+请求方式：POST
+
+请求参数：
+id 售卖时间ID
+
+返回结果：
+```json
+{
+    "code":200,
+    "message":"成功",
+    "data":1,
+    "error":false,
+    "success":true
+}
+```
+#### 4)、查询售卖时间
+请求模拟：curl http://127.0.0.1:9001/consumer/appSaleTime/selectByStoreId?storeId=1 -v
+
+请求方式：POST
+
+请求参数：
+storeId 店铺ID
+
+返回结果：
+```json
+{
+    "code":200,
+    "message":"成功",
+    "data":[
+        {
+            "id":2,
+            "storeId":1,
+            "saleTimeName":"早餐时间",
+            "startTime":"08:00",
+            "endTime":"12:00",
+            "createTime":1556020381000,
+            "updateTime":null,
+            "saleTimeStatus":1
+        }
+    ],
+    "error":false,
+    "success":true
+}
+```

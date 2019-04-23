@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
-@RequestMapping("/consumer/appGoodTag")
+@RequestMapping("/consumer/appGoodsTag")
 public class AppGoodsTagController {
 
     private static final String REST_URL_PREFIX = "http://PROVIDER";
