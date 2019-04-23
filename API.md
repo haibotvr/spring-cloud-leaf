@@ -411,7 +411,7 @@ storeId 店铺ID
     "success":true
 }
 ```
-### 5、口味
+### 6、口味
 #### 1)、添加口味
 请求模拟：curl -X POST -d "note=AAA&tasteName=AAA"  http://127.0.0.1:9001/consumer/appGoodsTaste/add -v
 
@@ -481,7 +481,7 @@ storeId 店铺ID
 ```json
 
 ```
-### 6、售卖时间
+### 7、售卖时间
 #### 1)、添加售卖时间
 请求模拟：curl -X POST -d "saleTimeName=早餐时间&startTime=08:00&endTime=12:00"  http://127.0.0.1:9001/consumer/appSaleTime/add -v
 
