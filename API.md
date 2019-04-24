@@ -197,7 +197,7 @@ id 菜单ID
 #### 3)、删除菜单
 请求模拟：curl  http://127.0.0.1:9001/consumer/appMenu/del?id=1 -v
 
-请求方式：POST
+请求方式：GET
 
 请求参数：
 menuName 菜单名称
@@ -282,7 +282,7 @@ categoryName 分类名称
 #### 3)、删除分类
 请求模拟：curl  http://127.0.0.1:9001/consumer/appGoodsCategory/del?id=1 -v
 
-请求方式：POST
+请求方式：GET
 
 请求参数：
 id 分类ID
@@ -300,7 +300,7 @@ id 分类ID
 #### 4)、查询分类
 请求模拟：curl http://127.0.0.1:9001/consumer/appGoodsCategory/selectByStoreId?storeId=1 -v
 
-请求方式：POST
+请求方式：GET
 
 请求参数：
 storeId 店铺ID
@@ -368,7 +368,7 @@ tagColor 标签颜色
 #### 3)、删除标签
 请求模拟：curl  http://127.0.0.1:9001/consumer/appGoodsTag/del?id=1 -v
 
-请求方式：POST
+请求方式：GET
 
 请求参数：
 id 标签ID
@@ -386,7 +386,7 @@ id 标签ID
 #### 4)、查询标签
 请求模拟：curl http://127.0.0.1:9001/consumer/appGoodsTag/selectByStoreId?storeId=1 -v
 
-请求方式：POST
+请求方式：GET
 
 请求参数：
 storeId 店铺ID
@@ -413,12 +413,11 @@ storeId 店铺ID
 ```
 ### 6、口味
 #### 1)、添加口味
-请求模拟：curl -X POST -d "note=AAA&tasteName=AAA"  http://127.0.0.1:9001/consumer/appGoodsTaste/add -v
+请求模拟：curl -X POST -d "tasteName=AAA"  http://127.0.0.1:9001/consumer/appGoodsTaste/add -v
 
 请求方式：POST
 
 请求参数：
-note 口味明细
 tasteName 口味名称
 
 返回结果：
@@ -432,13 +431,12 @@ tasteName 口味名称
 }
 ```
 #### 2)、修改口味
-请求模拟：curl -X POST -d "id=1&note=AAA&tasteName=AAA"  http://127.0.0.1:9001/consumer/appGoodsTaste/edit -v
+请求模拟：curl -X POST -d "id=1&tasteName=不放蒜"  http://127.0.0.1:9001/consumer/appGoodsTaste/edit -v
 
 请求方式：POST
 
 请求参数：
 id 口味ID
-note 口味明细
 tasteName 口味名称
 
 返回结果：
@@ -454,7 +452,7 @@ tasteName 口味名称
 #### 3)、删除口味
 请求模拟：curl  http://127.0.0.1:9001/consumer/appGoodsTaste/del?id=1 -v
 
-请求方式：POST
+请求方式：GET
 
 请求参数：
 id 口味ID
@@ -472,14 +470,29 @@ id 口味ID
 #### 4)、查询口味
 请求模拟：curl http://127.0.0.1:9001/consumer/appGoodsTaste/selectByStoreId?storeId=1 -v
 
-请求方式：POST
+请求方式：GET
 
 请求参数：
 storeId 店铺ID
 
 返回结果：
 ```json
-
+{
+    "code":200,
+    "message":"成功",
+    "data":[
+        {
+            "id":1,
+            "tasteName":"不放蒜",
+            "storeId":1,
+            "createTime":1556078085000,
+            "updateTime":1556087088000,
+            "tasteStatus":1
+        }
+    ],
+    "error":false,
+    "success":true
+}
 ```
 ### 7、售卖时间
 #### 1)、添加售卖时间
@@ -526,7 +539,7 @@ endTime 结束时间
 #### 3)、删除售卖时间
 请求模拟：curl  http://127.0.0.1:9001/consumer/appSaleTime/del?id=1 -v
 
-请求方式：POST
+请求方式：GET
 
 请求参数：
 id 售卖时间ID
@@ -544,7 +557,7 @@ id 售卖时间ID
 #### 4)、查询售卖时间
 请求模拟：curl http://127.0.0.1:9001/consumer/appSaleTime/selectByStoreId?storeId=1 -v
 
-请求方式：POST
+请求方式：GET
 
 请求参数：
 storeId 店铺ID
@@ -556,13 +569,23 @@ storeId 店铺ID
     "message":"成功",
     "data":[
         {
-            "id":2,
+            "id":1,
             "storeId":1,
             "saleTimeName":"早餐时间",
             "startTime":"08:00",
-            "endTime":"12:00",
+            "endTime":"13:00",
+            "createTime":1556020218000,
+            "updateTime":1556087256000,
+            "saleTimeStatus":1
+        },
+        {
+            "id":2,
+            "storeId":1,
+            "saleTimeName":"午餐时间",
+            "startTime":"13:00",
+            "endTime":"20:00",
             "createTime":1556020381000,
-            "updateTime":null,
+            "updateTime":1556087301000,
             "saleTimeStatus":1
         }
     ],
