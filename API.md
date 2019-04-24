@@ -593,3 +593,119 @@ storeId 店铺ID
     "success":true
 }
 ```
+### 8、商品
+#### 1)、添加商品
+请求模拟：curl -X POST -d "goodsName=商品&goodsPrice=1000&categoryId=1&goodsPic=&goodsIndex=1&unitId=2&isVip=1&vipPrice=900&spelling=SP&canDiscount=1&goodsTaste=[{\"name\":\"加麻\"},{\"name\":\"加辣\"},{\"name\":\"不放葱\"}]&goodsSaleTime=[{\"start\":\"08:00\",\"end\":\"11:00\"},{\"start\":\"13:00\",\"end\":\"20:00\"}]"  http://127.0.0.1:9001/consumer/appGoods/add -v
+
+请求方式：POST
+
+请求参数：
+goodsName 商品名称
+goodsPrice 商品价格
+categoryId 分类ID
+goodsPic 商品图片
+goodsIndex 商品排序
+unitId 商品单位ID
+isVip 是否VIP
+vipPrice VIP价格
+spelling 商品名称首字母缩写
+canDiscount 是否可折扣
+goodsTaste 商品口味JSON
+goodsSaleTime 商品销售时间JSON
+
+返回结果：
+```json
+{
+    "code":200,
+    "message":"成功",
+    "data":1,
+    "error":false,
+    "success":true
+}
+```
+#### 2)、修改商品
+请求模拟：curl -X POST -d "id=1&goodsName=干锅鱿鱼虾&goodsPrice=1500&categoryId=1&goodsPic=&goodsIndex=1&unitId=2&isVip=1&vipPrice=1000&spelling=GGYYX&canDiscount=1&goodsTaste=[{\"name\":\"加麻\"},{\"name\":\"加辣\"},{\"name\":\"不放葱\"}]&goodsSaleTime=[{\"start\":\"08:00\",\"end\":\"11:00\"},{\"start\":\"13:00\",\"end\":\"20:00\"}]"  http://127.0.0.1:9001/consumer/appGoods/edit -v
+
+请求方式：POST
+
+请求参数：
+id 商品ID
+goodsName 商品名称
+goodsPrice 商品价格
+categoryId 分类ID
+goodsPic 商品图片
+goodsIndex 商品排序
+unitId 商品单位ID
+isVip 是否VIP
+vipPrice VIP价格
+spelling 商品名称首字母缩写
+canDiscount 是否可折扣
+goodsTaste 商品口味JSON
+goodsSaleTime 商品销售时间JSON
+
+返回结果：
+```json
+{
+    "code":200,
+    "message":"成功",
+    "data":1,
+    "error":false,
+    "success":true
+}
+```
+#### 3)、删除商品
+请求模拟：curl  http://127.0.0.1:9001/consumer/appGoods/del?id=1 -v
+
+请求方式：GET
+
+请求参数：
+id 商品ID
+
+返回结果：
+```json
+{
+    "code":200,
+    "message":"成功",
+    "data":1,
+    "error":false,
+    "success":true
+}
+```
+#### 4)、查询商品
+请求模拟：curl http://127.0.0.1:9001/consumer/appGoods/selectByStoreId?storeId=1 -v
+
+请求方式：GET
+
+请求参数：
+storeId 店铺ID
+
+返回结果：
+```json
+{
+    "code":200,
+    "message":"成功",
+    "data":[
+        {
+            "id":1,
+            "goodsName":"干锅鱿鱼虾",
+            "goodsPrice":1500,
+            "goodsStatus":1,
+            "createTime":1556090172000,
+            "updateTime":1556090410000,
+            "categoryId":1,
+            "goodsIndex":1,
+            "unitId":2,
+            "isVip":1,
+            "vipPrice":1000,
+            "spelling":"GGYYX",
+            "storeId":1,
+            "canDiscount":1,
+            "goodsPic":"",
+            "goodsTaste":"[{\"name\":\"加麻\"},{\"name\":\"加辣\"},{\"name\":\"不放葱\"}]",
+            "goodsSaleTime":"[{\"start\":\"08:00\",\"end\":\"11:00\"},{\"start\":\"13:00\",\"end\":\"20:00\"}]"
+        }
+    ],
+    "error":false,
+    "success":true
+}
+```
