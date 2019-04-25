@@ -59,7 +59,7 @@ userEmail 邮箱
 
 ### 2、菜品单位
 #### 1)、添加单位
-请求模拟：curl -X POST -d "unitName=单位"  http://127.0.0.1:9001/consumer/appGoodUnit/add
+请求模拟：curl -X POST -d "unitName=单位"  http://127.0.0.1:9001/consumer/appGoodsUnit/add
 
 请求方式：POST
 
@@ -77,7 +77,7 @@ unitName 单位名称
 }
 ```
 #### 2)、修改单位
-请求模拟：curl -X POST -d "unitName=单位" -d "id=5"  http://127.0.0.1:9001/consumer/appGoodUnit/edit
+请求模拟：curl -X POST -d "unitName=单位" -d "id=5"  http://127.0.0.1:9001/consumer/appGoodsUnit/edit
 
 请求方式：POST
 
@@ -96,7 +96,7 @@ id 单位ID
 }
 ```
 #### 3)、删除单位
-请求模拟：curl http://127.0.0.1:9001/consumer/appGoodUnit/del?id=5 -v
+请求模拟：curl http://127.0.0.1:9001/consumer/appGoodsUnit/del?id=5 -v
 
 请求方式：GET
 
@@ -114,7 +114,7 @@ id 单位ID
 }
 ```
 #### 4)、查询单位
-请求模拟：curl http://127.0.0.1:9001/consumer/appGoodUnit/selectByStoreId?storeId=1 -v
+请求模拟：curl http://127.0.0.1:9001/consumer/appGoodsUnit/selectByStoreId?storeId=1 -v
 
 请求方式：GET
 
@@ -154,6 +154,65 @@ storeId 店铺ID
     ],
     "error":false,
     "success":true
+}
+```
+#### 5)、分页查询单位
+请求模拟：curl -X POST -d "storeId=1&pageNum=1&pageSize=2" http://127.0.0.1:9001/consumer/appGoodsUnit/findByPage -v
+
+请求方式：GET
+
+请求参数：
+storeId 店铺ID
+pageNum 第几页
+pageSize 每页数据条数
+
+返回结果：
+```json
+{
+    "code": 200,
+    "message": "成功",
+    "data": {
+        "total": 3,
+        "list": [
+            {
+                "id": 2,
+                "unitName": "盘",
+                "createTime": 1555659616000,
+                "updateTime": null,
+                "storeId": 1,
+                "unitStatus": 1
+            },
+            {
+                "id": 3,
+                "unitName": "箱",
+                "createTime": 1555659621000,
+                "updateTime": null,
+                "storeId": 1,
+                "unitStatus": 1
+            }
+        ],
+        "pageNum": 1,
+        "pageSize": 2,
+        "size": 2,
+        "startRow": 1,
+        "endRow": 2,
+        "pages": 2,
+        "prePage": 0,
+        "nextPage": 2,
+        "isFirstPage": true,
+        "isLastPage": false,
+        "hasPreviousPage": false,
+        "hasNextPage": true,
+        "navigatePages": 8,
+        "navigatepageNums": [
+            1,
+            2
+        ],
+        "navigateFirstPage": 1,
+        "navigateLastPage": 2
+    },
+    "error": false,
+    "success": true
 }
 ```
 ### 3、菜单
