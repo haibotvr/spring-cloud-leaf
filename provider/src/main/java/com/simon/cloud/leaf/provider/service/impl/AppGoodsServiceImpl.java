@@ -1,11 +1,14 @@
 package com.simon.cloud.leaf.provider.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.simon.cloud.leaf.api.entity.AppGoods;
 import com.simon.cloud.leaf.api.entity.AppGoodsExample;
 import com.simon.cloud.leaf.api.entity.AppGoodsWithBLOBs;
 import com.simon.cloud.leaf.api.enums.status.GoodsStatus;
 import com.simon.cloud.leaf.api.framework.exception.BusinessException;
 import com.simon.cloud.leaf.api.framework.web.ReturnValue;
+import com.simon.cloud.leaf.api.qc.StoreInfoQC;
 import com.simon.cloud.leaf.provider.dao.AppGoodsMapper;
 import com.simon.cloud.leaf.provider.service.AppGoodsService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,5 +52,16 @@ public class AppGoodsServiceImpl implements AppGoodsService {
         criteria.andStoreIdEqualTo(storeId);
         criteria.andGoodsStatusEqualTo(GoodsStatus.AVAILABLE.getValue());
         return ReturnValue.success().setData(appGoodsMapper.selectByExampleWithBLOBs(example));
+    }
+
+    @Override
+    public ReturnValue findByPage(StoreInfoQC qc) throws BusinessException {
+        PageHelper.startPage(qc.getPageNum(), qc.getPageSize());
+        AppGoodsExample example = new AppGoodsExample();
+        AppGoodsExample.Criteria criteria = example.createCriteria();
+        criteria.andStoreIdEqualTo(qc.getStoreId());
+        criteria.andGoodsStatusEqualTo(GoodsStatus.AVAILABLE.getValue());
+        PageInfo<AppGoodsWithBLOBs> info = new PageInfo<>(appGoodsMapper.selectByExampleWithBLOBs(example));
+        return ReturnValue.success().setData(info);
     }
 }

@@ -768,3 +768,64 @@ storeId 店铺ID
     "success":true
 }
 ```
+#### 5)、分页查询菜品
+请求模拟：curl -X POST -d "storeId=1&pageNum=1&pageSize=2" http://127.0.0.1:9001/consumer/appGoods/findByPage -v
+
+请求方式：GET
+
+请求参数：
+storeId 店铺ID
+pageNum 第几页
+pageSize 每页数据条数
+
+返回结果：
+```json
+{
+    "code": 200,
+    "message": "成功",
+    "data": {
+        "total": 1,
+        "list": [
+            {
+                "id": 1,
+                "goodsName": "干锅鱿鱼虾",
+                "goodsPrice": 1500,
+                "goodsStatus": 1,
+                "createTime": 1556090172000,
+                "updateTime": 1556090410000,
+                "categoryId": 1,
+                "goodsIndex": 1,
+                "unitId": 2,
+                "isVip": 1,
+                "vipPrice": 1000,
+                "spelling": "GGYYX",
+                "storeId": 1,
+                "canDiscount": 1,
+                "goodsPic": "",
+                "goodsTaste": "[{\"name\":\"加麻\"},{\"name\":\"加辣\"},{\"name\":\"不放葱\"}]",
+                "goodsSaleTime": "[{\"start\":\"08:00\",\"end\":\"11:00\"},{\"start\":\"13:00\",\"end\":\"20:00\"}]"
+            }
+        ],
+        "pageNum": 1,
+        "pageSize": 2,
+        "size": 1,
+        "startRow": 1,
+        "endRow": 1,
+        "pages": 1,
+        "prePage": 0,
+        "nextPage": 0,
+        "isFirstPage": true,
+        "isLastPage": true,
+        "hasPreviousPage": false,
+        "hasNextPage": false,
+        "navigatePages": 8,
+        "navigatepageNums": [
+            1
+        ],
+        "navigateFirstPage": 1,
+        "navigateLastPage": 1
+    },
+    "error": false,
+    "success": true
+}
+```
