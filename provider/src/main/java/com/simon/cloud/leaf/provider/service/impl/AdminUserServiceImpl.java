@@ -1,10 +1,13 @@
 package com.simon.cloud.leaf.provider.service.impl;
 
+import com.simon.cloud.leaf.api.dto.UserLoginDTO;
 import com.simon.cloud.leaf.api.entity.AdminUser;
 import com.simon.cloud.leaf.api.enums.exception.BusinessExceptionMessage;
 import com.simon.cloud.leaf.api.enums.status.AdminUserStatus;
+import com.simon.cloud.leaf.api.enums.status.UseStatus;
 import com.simon.cloud.leaf.api.framework.annotation.BeanValid;
 import com.simon.cloud.leaf.api.framework.exception.BusinessException;
+import com.simon.cloud.leaf.api.framework.kits.JwtHelper;
 import com.simon.cloud.leaf.api.framework.web.ReturnValue;
 import com.simon.cloud.leaf.api.vo.UserLoginVO;
 import com.simon.cloud.leaf.provider.dao.AdminUserMapper;
@@ -36,7 +39,11 @@ public class AdminUserServiceImpl implements AdminUserService {
         if(adminUser.getUserStatus().equals(AdminUserStatus.UNAVAILABLE.getValue())){
             throw new BusinessException(BusinessExceptionMessage.ADMIN_USER_IS_NOT_USE.getValue(), BusinessExceptionMessage.ADMIN_USER_IS_NOT_USE.getName());
         }
-        return ReturnValue.success().setData(adminUser).setMessage("登录成功");
+        UserLoginDTO user = new UserLoginDTO();
+        user.setUsername(adminUser.getLoginName());
+        user.setAvatar(adminUser.getImgUrl());
+        user.setToken(JwtHelper.createJWT(adminUser));
+        return ReturnValue.success().setData(user).setMessage("登录成功");
     }
 
     @Override

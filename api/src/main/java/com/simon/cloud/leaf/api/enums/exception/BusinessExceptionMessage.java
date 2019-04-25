@@ -5,6 +5,7 @@ package com.simon.cloud.leaf.api.enums.exception;
  */
 public enum BusinessExceptionMessage {
 
+    AUTHENTICATION_FAILED("认证失败", 1000),
     LOGIN_NAME_OR_PASSWORD_FAULT("用户名或密码错误", 1001),
     LOGIN_NAME_IS_NOT_EXIST("用户名不存在", 1002),
     LOGIN_NAME_IS_EXIST("用户名已存在", 1005),

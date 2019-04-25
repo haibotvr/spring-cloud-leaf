@@ -23,4 +23,5 @@ public class CustomExceptionHandler {
         log.error("捕获Controller异常:{}", e);
         return ReturnValue.error().setCode(e.getCode()).setMessage(e.getMessage());
     }
+
 }
