@@ -23,13 +23,23 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
-    public FilterRegistrationBean securityFilter(){
-        FilterRegistrationBean registrationBean = new FilterRegistrationBean();
-        registrationBean.setFilter(new SecurityFilter());
-        registrationBean.setUrlPatterns(Arrays.asList("/*"));
-        return registrationBean;
-    }
+//    @Bean
+//    public FilterRegistrationBean securityFilter(){
+//        //配置无需过滤的路径或者静态资源，如：css，image等
+//        StringBuffer excludedUriStr = new StringBuffer();
+//        excludedUriStr.append("/consumer/adminUser/login");
+//        excludedUriStr.append(",");
+//        excludedUriStr.append("/adminUser/login");
+//        excludedUriStr.append(",");
+//        excludedUriStr.append("/favicon.ico");
+//        excludedUriStr.append(",");
+//        excludedUriStr.append("/js/*");
+//        FilterRegistrationBean registrationBean = new FilterRegistrationBean();
+//        registrationBean.setFilter(new SecurityFilter());
+//        registrationBean.setUrlPatterns(Arrays.asList("/*"));
+//        registrationBean.addInitParameter("excludedUri", excludedUriStr.toString());
+//        return registrationBean;
+//    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {

@@ -29,7 +29,6 @@ public class JwtHelper {
                     .parseClaimsJws(jsonWebToken).getBody();
             return claims;
         } catch (Exception e) {
-            e.printStackTrace();
             throw new AuthenticationException(BusinessExceptionMessage.AUTHENTICATION_FAILED.getValue(), BusinessExceptionMessage.AUTHENTICATION_FAILED.getName());
         }
     }
@@ -49,11 +48,11 @@ public class JwtHelper {
         //添加参数
         JwtBuilder builder = Jwts.builder()
                 .setHeaderParam("typ", "JWT")
-                .claim(LeafConstant.HTTP_TOKEN, user)
+                .claim(LeafConstant.SESSION_USER, user)
                 .signWith(algorithm, signKey);
 
         //添加Token过期时间
-        long expMillis = nowMillis + expiredMillis * 1000;
+        long expMillis = nowMillis + expiredMillis;
         Date exp = new Date(expMillis);
         builder.setExpiration(exp).setNotBefore(now);
 
