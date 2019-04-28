@@ -32,9 +32,6 @@
         <lombok.version>1.16.18</lombok.version>
         <jjwt.version>0.9.0</jjwt.version>
         <pagehelper.version>1.2.10</pagehelper.version>
-        <project.build.eureka.directory>/home/simon/gitproject/spring-cloud-leaf/eureka/target</project.build.eureka.directory>
-        <project.build.consumer.directory>/home/simon/gitproject/spring-cloud-leaf/consumer/target</project.build.consumer.directory>
-        <project.build.provider.directory>/home/simon/gitproject/spring-cloud-leaf/provider/target</project.build.provider.directory>
         <project.output.directory>/home/simon/lib</project.output.directory>
     </properties>
 
