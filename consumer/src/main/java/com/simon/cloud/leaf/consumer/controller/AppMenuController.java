@@ -3,6 +3,7 @@ package com.simon.cloud.leaf.consumer.controller;
 import com.simon.cloud.leaf.api.entity.AppMenu;
 import com.simon.cloud.leaf.api.framework.web.ReturnValue;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -18,12 +19,12 @@ public class AppMenuController {
     private RestTemplate restTemplate;
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public ReturnValue add(AppMenu record) {
+    public ReturnValue add(@RequestBody AppMenu record) {
         return restTemplate.postForObject(REST_URL_PREFIX + "/appMenu/add", record, ReturnValue.class);
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
-    public ReturnValue edit(AppMenu record) {
+    public ReturnValue edit(@RequestBody AppMenu record) {
         return restTemplate.postForObject(REST_URL_PREFIX + "/appMenu/edit", record, ReturnValue.class);
     }
 

@@ -4,6 +4,7 @@ import com.simon.cloud.leaf.api.entity.AppGoodsUnit;
 import com.simon.cloud.leaf.api.framework.web.ReturnValue;
 import com.simon.cloud.leaf.api.qc.StoreInfoQC;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,12 +20,12 @@ public class AppGoodsUnitController {
     private RestTemplate restTemplate;
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
-    public ReturnValue add(AppGoodsUnit record) {
+    public ReturnValue add(@RequestBody AppGoodsUnit record) {
         return restTemplate.postForObject(REST_URL_PREFIX + "/appGoodsUnit/add", record, ReturnValue.class);
     }
 
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
-    public ReturnValue edit(AppGoodsUnit record) {
+    public ReturnValue edit(@RequestBody AppGoodsUnit record) {
         return restTemplate.postForObject(REST_URL_PREFIX + "/appGoodsUnit/edit", record, ReturnValue.class);
     }
 
@@ -39,7 +40,7 @@ public class AppGoodsUnitController {
     }
 
     @RequestMapping(value = "/findByPage", method = RequestMethod.POST)
-    public ReturnValue findByPage(StoreInfoQC qc) {
+    public ReturnValue findByPage(@RequestBody StoreInfoQC qc) {
         return restTemplate.postForObject(REST_URL_PREFIX + "/appGoodsUnit/findByPage",  qc, ReturnValue.class);
     }
 
