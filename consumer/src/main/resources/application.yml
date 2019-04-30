@@ -16,5 +16,5 @@ eureka:
 info:
   app.name: consumer
   company.name: www.simon.com
-  build.artifactId: ${project.artifactId}$
-  build.version: ${project.version}$
+  build.artifactId: v1
+  build.version: v1
