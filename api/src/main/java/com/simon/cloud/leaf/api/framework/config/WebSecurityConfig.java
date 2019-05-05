@@ -1,6 +1,6 @@
 package com.simon.cloud.leaf.api.framework.config;
 
-import com.simon.cloud.leaf.api.framework.filter.SecurityFilter;
+import com.simon.cloud.leaf.api.framework.filter.CustomCorsFilter;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -40,6 +40,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //        registrationBean.addInitParameter("excludedUri", excludedUriStr.toString());
 //        return registrationBean;
 //    }
+
+    @Bean
+    public FilterRegistrationBean corsFilter(){
+        FilterRegistrationBean registrationBean = new FilterRegistrationBean();
+        registrationBean.setFilter(new CustomCorsFilter());
+        registrationBean.setUrlPatterns(Arrays.asList("/*"));
+        return registrationBean;
+    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
