@@ -41,13 +41,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //        return registrationBean;
 //    }
 
-    @Bean
-    public FilterRegistrationBean corsFilter(){
-        FilterRegistrationBean registrationBean = new FilterRegistrationBean();
-        registrationBean.setFilter(new CustomCorsFilter());
-        registrationBean.setUrlPatterns(Arrays.asList("/*"));
-        return registrationBean;
-    }
+//    @Bean
+//    public FilterRegistrationBean corsFilter(){
+//        FilterRegistrationBean registrationBean = new FilterRegistrationBean();
+//        registrationBean.setFilter(new CustomCorsFilter());
+//        registrationBean.setUrlPatterns(Arrays.asList("/*"));
+//        return registrationBean;
+//    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
