@@ -2,7 +2,7 @@
 ## 一、后台相关
 ### 1、用户
 #### 1)、登录
-请求模拟：curl -X POST -d "username=wangtong" -d "password=123456" -d "code=1234" http://127.0.0.1:9001/consumer/adminUser/login
+请求模拟：curl -i -X POST -H 'Content-type':'application/json' -d '{"username":"wangtong","password":"123456","code":"1234"}' http://127.0.0.1:9001/consumer/adminUser/login -v
 
 请求方式：POST
 
@@ -34,7 +34,7 @@ code 验证码
 }
 ```
 #### 2)、注册
-请求模拟：curl -X POST -d "loginName=weihaibo&loginPassword=123456&realName=魏海波&nickName=simon&userEmail=554040883@qq.com&userPhone=18946554015" http://127.0.0.1:9001/consumer/adminUser/insert -v
+请求模拟：curl -i -X POST -H 'Content-type':'application/json' -d '{"loginName":"liwenxin","loginPassword":"123456","code":"1234","realName":"李文欣","userPhone":"18946554015"}' http://127.0.0.1:9001/consumer/adminUser/insert -v
 
 请求方式：POST
 
@@ -59,7 +59,7 @@ userEmail 邮箱
 
 ### 2、菜品单位
 #### 1)、添加单位
-请求模拟：curl -X POST -d "unitName=单位"  http://127.0.0.1:9001/consumer/appGoodsUnit/add
+请求模拟：curl -i -X POST -H 'Content-type':'application/json' -d '{"unitName":"桶"}' http://127.0.0.1:9001/consumer/appGoodsUnit/add -v
 
 请求方式：POST
 
@@ -77,7 +77,7 @@ unitName 单位名称
 }
 ```
 #### 2)、修改单位
-请求模拟：curl -X POST -d "unitName=单位" -d "id=5"  http://127.0.0.1:9001/consumer/appGoodsUnit/edit
+请求模拟：curl -i -X POST -H 'Content-type':'application/json' -d '{"unitName":"大桶","id":"6"}' http://127.0.0.1:9001/consumer/appGoodsUnit/edit -v
 
 请求方式：POST
 
@@ -157,9 +157,9 @@ storeId 店铺ID
 }
 ```
 #### 5)、分页查询单位
-请求模拟：curl -X POST -d "storeId=1&pageNum=1&pageSize=2" http://127.0.0.1:9001/consumer/appGoodsUnit/findByPage -v
+请求模拟：curl -i -X POST -H 'Content-type':'application/json' -d '{"storeId":"1","pageNum":"1","pageSize":"2"}' http://127.0.0.1:9001/consumer/appGoodsUnit/findByPage -v
 
-请求方式：GET
+请求方式：POST
 
 请求参数：
 storeId 店铺ID
@@ -217,7 +217,7 @@ pageSize 每页数据条数
 ```
 ### 3、菜单
 #### 1)、添加菜单
-请求模拟：curl -X POST -d "menuName=早餐菜单"  http://127.0.0.1:9001/consumer/appMenu/add -v
+请求模拟：curl -i -X POST -H 'Content-type':'application/json' -d '{"menuName":"夜宵菜单"}' http://127.0.0.1:9001/consumer/appMenu/add -v
 
 请求方式：POST
 
@@ -235,7 +235,7 @@ menuName 菜单名称
 }
 ```
 #### 2)、修改菜单
-请求模拟：curl -X POST -d "menuName=早餐菜单&id=1"  http://127.0.0.1:9001/consumer/appMenu/edit -v
+请求模拟：curl -i -X POST -H 'Content-type':'application/json' -d '{"menuName":"午餐菜单","id":"2"}' http://127.0.0.1:9001/consumer/appMenu/edit -v
 
 请求方式：POST
 
@@ -299,9 +299,69 @@ storeId 店铺ID
     "success":true
 }
 ```
+#### 5)、分页查询菜单
+请求模拟：curl -i -X POST -H 'Content-type':'application/json' -d '{"storeId":"1","pageNum":"1","pageSize":"2"}' http://127.0.0.1:9001/consumer/appMenu/findByPage -v
+
+请求方式：POST
+
+请求参数：
+storeId 店铺ID
+pageNum 第几页
+pageSize 每页数据条数
+
+查询结果
+```json
+{
+    "code":200,
+    "message":"成功",
+    "data":{
+        "total":2,
+        "list":[
+            {
+                "id":1,
+                "menuName":"早餐菜单",
+                "menuStatus":1,
+                "createTime":1556041603000,
+                "updateTime":1556012921000,
+                "storeId":1
+            },
+            {
+                "id":2,
+                "menuName":"午餐菜单",
+                "menuStatus":1,
+                "createTime":1557106696000,
+                "updateTime":1557106850000,
+                "storeId":1
+            }
+        ],
+        "pageNum":1,
+        "pageSize":2,
+        "size":2,
+        "startRow":1,
+        "endRow":2,
+        "pages":1,
+        "prePage":0,
+        "nextPage":0,
+        "isFirstPage":true,
+        "isLastPage":true,
+        "hasPreviousPage":false,
+        "hasNextPage":false,
+        "navigatePages":8,
+        "navigatepageNums":[
+            1
+        ],
+        "navigateFirstPage":1,
+        "navigateLastPage":1
+    },
+    "error":false,
+    "success":true
+}
+
+```
+
 ### 4、分类
 #### 1)、添加分类
-请求模拟：curl -X POST -d "menuId=1&categoryName=早餐类"  http://127.0.0.1:9001/consumer/appGoodsCategory/add -v
+请求模拟：curl -i -X POST -H 'Content-type':'application/json' -d '{"menuId":"1","categoryName":"水果类"}' http://127.0.0.1:9001/consumer/appGoodsCategory/add -v
 
 请求方式：POST
 
@@ -320,7 +380,7 @@ categoryName 分类名称
 }
 ```
 #### 2)、修改分类
-请求模拟：curl -X POST -d "id=1&categoryName=早餐"  http://127.0.0.1:9001/consumer/appGoodsCategory/edit -v
+请求模拟：curl -i -X POST -H 'Content-type':'application/json' -d '{"categoryName":"沙拉酱","id":"1"}' http://127.0.0.1:9001/consumer/appGoodsCategory/edit -v
 
 请求方式：POST
 
@@ -383,6 +443,67 @@ storeId 店铺ID
     "error":false,
     "success":true
 }
+```
+#### 5)、分页查询分类
+请求模拟：curl -i -X POST -H 'Content-type':'application/json' -d '{"storeId":"1","pageNum":"1","pageSize":"2"}' http://127.0.0.1:9001/consumer/appGoodsCategory/findByPage -v
+
+请求方式：POST
+
+请求参数：
+storeId 店铺ID
+pageNum 第几页
+pageSize 每页数据条数
+
+查询结果
+```json
+{
+    "code":200,
+    "message":"成功",
+    "data":{
+        "total":2,
+        "list":[
+            {
+                "id":1,
+                "categoryName":"沙拉酱",
+                "menuId":1,
+                "categoryStatus":1,
+                "createTime":1556016792000,
+                "updateTime":1557107689000,
+                "storeId":1
+            },
+            {
+                "id":2,
+                "categoryName":"水果类",
+                "menuId":1,
+                "categoryStatus":1,
+                "createTime":1557107393000,
+                "updateTime":null,
+                "storeId":1
+            }
+        ],
+        "pageNum":1,
+        "pageSize":2,
+        "size":2,
+        "startRow":1,
+        "endRow":2,
+        "pages":1,
+        "prePage":0,
+        "nextPage":0,
+        "isFirstPage":true,
+        "isLastPage":true,
+        "hasPreviousPage":false,
+        "hasNextPage":false,
+        "navigatePages":8,
+        "navigatepageNums":[
+            1
+        ],
+        "navigateFirstPage":1,
+        "navigateLastPage":1
+    },
+    "error":false,
+    "success":true
+}
+
 ```
 ### 5、标签
 #### 1)、添加标签
@@ -654,7 +775,7 @@ storeId 店铺ID
 ```
 ### 8、商品
 #### 1)、添加商品
-请求模拟：curl -X POST -d "goodsName=商品&goodsPrice=1000&categoryId=1&goodsPic=&goodsIndex=1&unitId=2&isVip=1&vipPrice=900&spelling=SP&canDiscount=1&goodsTaste=[{\"name\":\"加麻\"},{\"name\":\"加辣\"},{\"name\":\"不放葱\"}]&goodsSaleTime=[{\"start\":\"08:00\",\"end\":\"11:00\"},{\"start\":\"13:00\",\"end\":\"20:00\"}]"  http://127.0.0.1:9001/consumer/appGoods/add -v
+请求模拟：curl -i -X POST -H 'Content-type':'application/json' -d '{"goodsName":"四喜丸子","goodsPrice":"2000","categoryId":"2","goodsPic":"","goodsIndex":"2","unitId":"2","isVip":"1","vipPrice":"1000","spelling":"SXWZ","canDiscount":"1","goodsTaste":"[{\"name\":\"加麻\"},{\"name\":\"加辣\"},{\"name\":\"不放葱\"}]","goodsSaleTime":"[{\"start\":\"08:00\",\"end\":\"11:00\"},{\"start\":\"13:00\",\"end\":\"20:00\"}]"}' http://127.0.0.1:9001/consumer/appGoods/add -v
 
 请求方式：POST
 
@@ -683,7 +804,7 @@ goodsSaleTime 商品销售时间JSON
 }
 ```
 #### 2)、修改商品
-请求模拟：curl -X POST -d "id=1&goodsName=干锅鱿鱼虾&goodsPrice=1500&categoryId=1&goodsPic=&goodsIndex=1&unitId=2&isVip=1&vipPrice=1000&spelling=GGYYX&canDiscount=1&goodsTaste=[{\"name\":\"加麻\"},{\"name\":\"加辣\"},{\"name\":\"不放葱\"}]&goodsSaleTime=[{\"start\":\"08:00\",\"end\":\"11:00\"},{\"start\":\"13:00\",\"end\":\"20:00\"}]"  http://127.0.0.1:9001/consumer/appGoods/edit -v
+请求模拟：curl -i -X POST -H 'Content-type':'application/json' -d '{"id":"3","goodsName":"猪脚菜","goodsPrice":"2000","categoryId":"2","goodsPic":"","goodsIndex":"2","unitId":"2","isVip":"1","vipPrice":"1000","spelling":"ZJC","canDiscount":"1","goodsTaste":"[{\"name\":\"加麻\"},{\"name\":\"加辣\"},{\"name\":\"不放葱\"}]","goodsSaleTime":"[{\"start\":\"08:00\",\"end\":\"11:00\"},{\"start\":\"13:00\",\"end\":\"20:00\"}]"}' http://127.0.0.1:9001/consumer/appGoods/edit -v
 
 请求方式：POST
 
@@ -768,10 +889,10 @@ storeId 店铺ID
     "success":true
 }
 ```
-#### 5)、分页查询菜品
-请求模拟：curl -X POST -d "storeId=1&pageNum=1&pageSize=2" http://127.0.0.1:9001/consumer/appGoods/findByPage -v
+#### 5)、分页查询商品
+请求模拟：curl -i -X POST -H 'Content-type':'application/json' -d '{"storeId":"1","pageNum":"1","pageSize":"2"}' http://127.0.0.1:9001/consumer/appGoods/findByPage -v
 
-请求方式：GET
+请求方式：POST
 
 请求参数：
 storeId 店铺ID

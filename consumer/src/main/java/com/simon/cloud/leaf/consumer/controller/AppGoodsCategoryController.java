@@ -2,6 +2,7 @@ package com.simon.cloud.leaf.consumer.controller;
 
 import com.simon.cloud.leaf.api.entity.AppGoodsCategory;
 import com.simon.cloud.leaf.api.framework.web.ReturnValue;
+import com.simon.cloud.leaf.api.qc.StoreInfoQC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,4 +39,8 @@ public class AppGoodsCategoryController {
         return restTemplate.getForObject(REST_URL_PREFIX + "/appGoodsCategory/selectByStoreId/" + storeId, ReturnValue.class);
     }
 
+    @RequestMapping(value = "/findByPage", method = RequestMethod.POST)
+    public ReturnValue findByPage(@RequestBody StoreInfoQC qc) {
+        return restTemplate.postForObject(REST_URL_PREFIX + "/appGoodsCategory/findByPage",  qc, ReturnValue.class);
+    }
 }

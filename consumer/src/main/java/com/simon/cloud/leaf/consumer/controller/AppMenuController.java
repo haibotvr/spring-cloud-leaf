@@ -2,6 +2,7 @@ package com.simon.cloud.leaf.consumer.controller;
 
 import com.simon.cloud.leaf.api.entity.AppMenu;
 import com.simon.cloud.leaf.api.framework.web.ReturnValue;
+import com.simon.cloud.leaf.api.qc.StoreInfoQC;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,6 +37,11 @@ public class AppMenuController {
     @RequestMapping(value = "/selectByStoreId", method = RequestMethod.GET)
     public ReturnValue selectByStoreId(Long storeId) {
         return restTemplate.getForObject(REST_URL_PREFIX + "/appMenu/selectByStoreId/" + storeId, ReturnValue.class);
+    }
+
+    @RequestMapping(value = "/findByPage", method = RequestMethod.POST)
+    public ReturnValue findByPage(@RequestBody StoreInfoQC qc) {
+        return restTemplate.postForObject(REST_URL_PREFIX + "/appMenu/findByPage",  qc, ReturnValue.class);
     }
 
 }

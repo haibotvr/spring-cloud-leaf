@@ -1,10 +1,16 @@
 package com.simon.cloud.leaf.provider.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.simon.cloud.leaf.api.entity.AppGoodsUnit;
+import com.simon.cloud.leaf.api.entity.AppGoodsUnitExample;
 import com.simon.cloud.leaf.api.entity.AppMenu;
 import com.simon.cloud.leaf.api.entity.AppMenuExample;
 import com.simon.cloud.leaf.api.enums.status.MenuStatus;
+import com.simon.cloud.leaf.api.enums.status.UnitStatus;
 import com.simon.cloud.leaf.api.framework.exception.BusinessException;
 import com.simon.cloud.leaf.api.framework.web.ReturnValue;
+import com.simon.cloud.leaf.api.qc.StoreInfoQC;
 import com.simon.cloud.leaf.provider.dao.AppMenuMapper;
 import com.simon.cloud.leaf.provider.service.AppMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,5 +54,16 @@ public class AppMenuServiceImpl implements AppMenuService {
         criteria.andStoreIdEqualTo(storeId);
         criteria.andMenuStatusEqualTo(MenuStatus.AVAILABLE.getValue());
         return ReturnValue.success().setData(appMenuMapper.selectByExample(example));
+    }
+
+    @Override
+    public ReturnValue findByPage(StoreInfoQC qc) throws BusinessException {
+        PageHelper.startPage(qc.getPageNum(), qc.getPageSize());
+        AppMenuExample example = new AppMenuExample();
+        AppMenuExample.Criteria criteria = example.createCriteria();
+        criteria.andStoreIdEqualTo(qc.getStoreId());
+        criteria.andMenuStatusEqualTo(MenuStatus.AVAILABLE.getValue());
+        PageInfo<AppMenu> info = new PageInfo<>(appMenuMapper.selectByExample(example));
+        return ReturnValue.success().setData(info);
     }
 }

@@ -1,10 +1,13 @@
 package com.simon.cloud.leaf.provider.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.simon.cloud.leaf.api.entity.AppGoodsCategory;
 import com.simon.cloud.leaf.api.entity.AppGoodsCategoryExample;
 import com.simon.cloud.leaf.api.enums.status.GoodsCategoryStatus;
 import com.simon.cloud.leaf.api.framework.exception.BusinessException;
 import com.simon.cloud.leaf.api.framework.web.ReturnValue;
+import com.simon.cloud.leaf.api.qc.StoreInfoQC;
 import com.simon.cloud.leaf.provider.dao.AppGoodsCategoryMapper;
 import com.simon.cloud.leaf.provider.service.AppGoodsCategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,5 +51,16 @@ public class AppGoodsCategoryServiceImpl implements AppGoodsCategoryService {
         criteria.andStoreIdEqualTo(storeId);
         criteria.andCategoryStatusEqualTo(GoodsCategoryStatus.AVAILABLE.getValue());
         return ReturnValue.success().setData(appGoodsCategoryMapper.selectByExample(example));
+    }
+
+    @Override
+    public ReturnValue findByPage(StoreInfoQC qc) throws BusinessException {
+        PageHelper.startPage(qc.getPageNum(), qc.getPageSize());
+        AppGoodsCategoryExample example = new AppGoodsCategoryExample();
+        AppGoodsCategoryExample.Criteria criteria = example.createCriteria();
+        criteria.andStoreIdEqualTo(qc.getStoreId());
+        criteria.andCategoryStatusEqualTo(GoodsCategoryStatus.AVAILABLE.getValue());
+        PageInfo<AppGoodsCategory> info = new PageInfo<>(appGoodsCategoryMapper.selectByExample(example));
+        return ReturnValue.success().setData(info);
     }
 }
