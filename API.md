@@ -507,7 +507,7 @@ pageSize 每页数据条数
 ```
 ### 5、标签
 #### 1)、添加标签
-请求模拟：curl -X POST -d "tagName=火&tagColor=red"  http://127.0.0.1:9001/consumer/appGoodsTag/add -v
+请求模拟：curl -i -X POST -H 'Content-type':'application/json' -d '{"tagName":"人气","tagColor":"green"}' http://127.0.0.1:9001/consumer/appGoodsTag/add -v
 
 请求方式：POST
 
@@ -526,7 +526,7 @@ tagColor 标签颜色
 }
 ```
 #### 2)、修改标签
-请求模拟：curl -X POST -d "id=1&tagName=热&tagColor=red"  http://127.0.0.1:9001/consumer/appGoodsTag/edit -v
+请求模拟：curl -i -X POST -H 'Content-type':'application/json' -d '{"id":"2","tagName":"人气","tagColor":"green"}' http://127.0.0.1:9001/consumer/appGoodsTag/edit -v
 
 请求方式：POST
 
@@ -591,9 +591,69 @@ storeId 店铺ID
     "success":true
 }
 ```
+#### 5)、分页查询标签
+请求模拟：curl -i -X POST -H 'Content-type':'application/json' -d '{"storeId":"1","pageNum":"1","pageSize":"2"}' http://127.0.0.1:9001/consumer/appGoodsTag/findByPage -v
+
+请求方式：POST
+
+请求参数：
+storeId 店铺ID
+pageNum 第几页
+pageSize 每页数据条数
+
+查询结果
+```json
+{
+    "code":200,
+    "message":"成功",
+    "data":{
+        "total":2,
+        "list":[
+            {
+                "id":1,
+                "tagName":"热",
+                "tagColor":"red",
+                "createTime":1556018299000,
+                "updateTime":1556018354000,
+                "tagStatus":1,
+                "storeId":1
+            },
+            {
+                "id":2,
+                "tagName":"人气",
+                "tagColor":"green",
+                "createTime":1557126466000,
+                "updateTime":1557126595000,
+                "tagStatus":1,
+                "storeId":1
+            }
+        ],
+        "pageNum":1,
+        "pageSize":2,
+        "size":2,
+        "startRow":1,
+        "endRow":2,
+        "pages":1,
+        "prePage":0,
+        "nextPage":0,
+        "isFirstPage":true,
+        "isLastPage":true,
+        "hasPreviousPage":false,
+        "hasNextPage":false,
+        "navigatePages":8,
+        "navigatepageNums":[
+            1
+        ],
+        "navigateFirstPage":1,
+        "navigateLastPage":1
+    },
+    "error":false,
+    "success":true
+}
+```
 ### 6、口味
 #### 1)、添加口味
-请求模拟：curl -X POST -d "tasteName=AAA"  http://127.0.0.1:9001/consumer/appGoodsTaste/add -v
+请求模拟：curl -i -X POST -H 'Content-type':'application/json' -d '{"tasteName":"多放肉"}' http://127.0.0.1:9001/consumer/appGoodsTaste/add -v
 
 请求方式：POST
 
@@ -611,7 +671,8 @@ tasteName 口味名称
 }
 ```
 #### 2)、修改口味
-请求模拟：curl -X POST -d "id=1&tasteName=不放蒜"  http://127.0.0.1:9001/consumer/appGoodsTaste/edit -v
+请求模拟：
+curl -i -X POST -H 'Content-type':'application/json' -d '{"id":"2","tasteName":"多放肉"}' http://127.0.0.1:9001/consumer/appGoodsTaste/edit -v
 
 请求方式：POST
 
@@ -674,9 +735,67 @@ storeId 店铺ID
     "success":true
 }
 ```
+#### 5)、分页查询口味
+请求模拟：curl -i -X POST -H 'Content-type':'application/json' -d '{"storeId":"1","pageNum":"1","pageSize":"2"}' http://127.0.0.1:9001/consumer/appGoodsTaste/findByPage -v
+
+请求方式：POST
+
+请求参数：
+storeId 店铺ID
+pageNum 第几页
+pageSize 每页数据条数
+
+查询结果
+```json
+{
+    "code":200,
+    "message":"成功",
+    "data":{
+        "total":2,
+        "list":[
+            {
+                "id":1,
+                "tasteName":"不放蒜",
+                "storeId":1,
+                "createTime":1556078085000,
+                "updateTime":1556087088000,
+                "tasteStatus":1
+            },
+            {
+                "id":2,
+                "tasteName":"多放肉",
+                "storeId":1,
+                "createTime":1557126793000,
+                "updateTime":1557126877000,
+                "tasteStatus":1
+            }
+        ],
+        "pageNum":1,
+        "pageSize":2,
+        "size":2,
+        "startRow":1,
+        "endRow":2,
+        "pages":1,
+        "prePage":0,
+        "nextPage":0,
+        "isFirstPage":true,
+        "isLastPage":true,
+        "hasPreviousPage":false,
+        "hasNextPage":false,
+        "navigatePages":8,
+        "navigatepageNums":[
+            1
+        ],
+        "navigateFirstPage":1,
+        "navigateLastPage":1
+    },
+    "error":false,
+    "success":true
+}
+```
 ### 7、售卖时间
 #### 1)、添加售卖时间
-请求模拟：curl -X POST -d "saleTimeName=早餐时间&startTime=08:00&endTime=12:00"  http://127.0.0.1:9001/consumer/appSaleTime/add -v
+请求模拟：curl -i -X POST -H 'Content-type':'application/json' -d '{"saleTimeName":"晚餐时间","startTime":"18:00","endTime":"21:00"}' http://127.0.0.1:9001/consumer/appSaleTime/add -v
 
 请求方式：POST
 
@@ -696,7 +815,7 @@ endTime 结束时间
 }
 ```
 #### 2)、修改售卖时间
-请求模拟：curl -X POST -d "id=1&saleTimeName=早餐时间&startTime=08:00&endTime=13:00"  http://127.0.0.1:9001/consumer/appSaleTime/edit -v
+请求模拟：curl -i -X POST -H 'Content-type':'application/json' -d '{"saleTimeName":"晚餐时间","startTime":"18:00","endTime":"21:00","id":"3"}' http://127.0.0.1:9001/consumer/appSaleTime/edit -v
 
 请求方式：POST
 
@@ -769,6 +888,69 @@ storeId 店铺ID
             "saleTimeStatus":1
         }
     ],
+    "error":false,
+    "success":true
+}
+```
+#### 5)、分页查询售卖时间
+请求模拟：curl -i -X POST -H 'Content-type':'application/json' -d '{"storeId":"1","pageNum":"1","pageSize":"2"}' http://127.0.0.1:9001/consumer/appGoodsTaste/findByPage -v
+
+请求方式：POST
+
+请求参数：
+storeId 店铺ID
+pageNum 第几页
+pageSize 每页数据条数
+
+查询结果
+```json
+{
+    "code":200,
+    "message":"成功",
+    "data":{
+        "total":3,
+        "list":[
+            {
+                "id":1,
+                "storeId":1,
+                "saleTimeName":"早餐时间",
+                "startTime":"08:00",
+                "endTime":"13:00",
+                "createTime":1556020218000,
+                "updateTime":1556087256000,
+                "saleTimeStatus":1
+            },
+            {
+                "id":2,
+                "storeId":1,
+                "saleTimeName":"午餐时间",
+                "startTime":"13:00",
+                "endTime":"20:00",
+                "createTime":1556020381000,
+                "updateTime":1556087301000,
+                "saleTimeStatus":1
+            }
+        ],
+        "pageNum":1,
+        "pageSize":2,
+        "size":2,
+        "startRow":1,
+        "endRow":2,
+        "pages":2,
+        "prePage":0,
+        "nextPage":2,
+        "isFirstPage":true,
+        "isLastPage":false,
+        "hasPreviousPage":false,
+        "hasNextPage":true,
+        "navigatePages":8,
+        "navigatepageNums":[
+            1,
+            2
+        ],
+        "navigateFirstPage":1,
+        "navigateLastPage":2
+    },
     "error":false,
     "success":true
 }
