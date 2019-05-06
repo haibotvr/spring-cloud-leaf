@@ -2,6 +2,7 @@ package com.simon.cloud.leaf.provider.controller;
 
 import com.simon.cloud.leaf.api.entity.AppGoodsTag;
 import com.simon.cloud.leaf.api.framework.web.ReturnValue;
+import com.simon.cloud.leaf.api.qc.StoreInfoQC;
 import com.simon.cloud.leaf.provider.service.AppGoodsTagService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,11 @@ public class AppGoodsTagController {
     @GetMapping(value = "/appGoodsTag/selectByStoreId/{storeId}")
     public ReturnValue selectByStoreId(@PathVariable Long storeId) {
         return appGoodsTagService.selectByStoreId(storeId);
+    }
+
+    @PostMapping(value = "/appGoodsTag/findByPage")
+    public ReturnValue findByPage(@RequestBody StoreInfoQC qc) {
+        return appGoodsTagService.findByPage(qc);
     }
 
 }

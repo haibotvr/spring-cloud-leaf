@@ -1,10 +1,13 @@
 package com.simon.cloud.leaf.provider.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.simon.cloud.leaf.api.entity.AppGoodsTaste;
 import com.simon.cloud.leaf.api.entity.AppGoodsTasteExample;
 import com.simon.cloud.leaf.api.enums.status.UseStatus;
 import com.simon.cloud.leaf.api.framework.exception.BusinessException;
 import com.simon.cloud.leaf.api.framework.web.ReturnValue;
+import com.simon.cloud.leaf.api.qc.StoreInfoQC;
 import com.simon.cloud.leaf.provider.dao.AppGoodsTasteMapper;
 import com.simon.cloud.leaf.provider.service.AppGoodsTasteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,5 +51,16 @@ public class AppGoodsTasteServiceImpl implements AppGoodsTasteService {
         criteria.andStoreIdEqualTo(storeId);
         criteria.andTasteStatusEqualTo(UseStatus.YES.getValue());
         return ReturnValue.success().setData(appGoodsTasteMapper.selectByExample(example));
+    }
+
+    @Override
+    public ReturnValue findByPage(StoreInfoQC qc) throws BusinessException {
+        PageHelper.startPage(qc.getPageNum(), qc.getPageSize());
+        AppGoodsTasteExample example = new AppGoodsTasteExample();
+        AppGoodsTasteExample.Criteria criteria = example.createCriteria();
+        criteria.andStoreIdEqualTo(qc.getStoreId());
+        criteria.andTasteStatusEqualTo(UseStatus.YES.getValue());
+        PageInfo<AppGoodsTaste> info = new PageInfo<>(appGoodsTasteMapper.selectByExample(example));
+        return ReturnValue.success().setData(info);
     }
 }

@@ -1,10 +1,13 @@
 package com.simon.cloud.leaf.provider.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.simon.cloud.leaf.api.entity.AppSaleTime;
 import com.simon.cloud.leaf.api.entity.AppSaleTimeExample;
 import com.simon.cloud.leaf.api.enums.status.SaleTimeStatus;
 import com.simon.cloud.leaf.api.framework.exception.BusinessException;
 import com.simon.cloud.leaf.api.framework.web.ReturnValue;
+import com.simon.cloud.leaf.api.qc.StoreInfoQC;
 import com.simon.cloud.leaf.provider.dao.AppSaleTimeMapper;
 import com.simon.cloud.leaf.provider.service.AppSaleTimeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,5 +51,16 @@ public class AppSaleTimeServiceImpl implements AppSaleTimeService {
         criteria.andStoreIdEqualTo(storeId);
         criteria.andSaleTimeStatusEqualTo(SaleTimeStatus.AVAILABLE.getValue());
         return ReturnValue.success().setData(appSaleTimeMapper.selectByExample(example));
+    }
+
+    @Override
+    public ReturnValue findByPage(StoreInfoQC qc) throws BusinessException {
+        PageHelper.startPage(qc.getPageNum(), qc.getPageSize());
+        AppSaleTimeExample example = new AppSaleTimeExample();
+        AppSaleTimeExample.Criteria criteria = example.createCriteria();
+        criteria.andStoreIdEqualTo(qc.getStoreId());
+        criteria.andSaleTimeStatusEqualTo(SaleTimeStatus.AVAILABLE.getValue());
+        PageInfo<AppSaleTime> info = new PageInfo<>(appSaleTimeMapper.selectByExample(example));
+        return ReturnValue.success().setData(info);
     }
 }
